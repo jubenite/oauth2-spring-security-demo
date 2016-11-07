@@ -1,0 +1,24 @@
+server:
+  port: 9081
+  contextPath: /resource-spl-1
+
+management:
+  context-path: /resource-spl-1/management
+  port: 7081
+  security:
+    enabled: false
+
+# custom configuration
+auth:
+ server:
+   url: http://localhost:9083/auth-service/oauth/check_token/
+   clientId: oauth2-secret
+   clientsecret: bbT3W5k8ZW6W
+
+# custom configuration
+rest.remote.persons: http://localhost:9082/resource-spl-2/persons
+rest.remote.protected: http://localhost:9082/resource-spl-2/protected
+
+logging:
+ level:
+  org.springframework.security: DEBUG

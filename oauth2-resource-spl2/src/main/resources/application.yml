@@ -1,0 +1,20 @@
+server:
+  port: 9082
+  contextPath: /resource-spl-2
+
+management:
+  context-path: /resource-spl-2/management
+  port: 7082
+  security:
+    enabled: false
+ 
+# custom configuration
+auth:
+ server:
+   url: http://localhost:9083/auth-service/oauth/check_token/
+   clientId: oauth2-secret
+   clientsecret: bbT3W5k8ZW6W
+   
+logging:
+ level:
+  org.springframework.security: DEBUG

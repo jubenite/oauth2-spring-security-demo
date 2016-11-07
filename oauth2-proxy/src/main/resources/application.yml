@@ -1,0 +1,45 @@
+#debug: true
+server:
+  contextPath: /proxy
+  port: 9080
+  
+management:
+  context-path: /proxy/management
+  port: 7080
+  security:
+    enabled: false
+
+zuul:
+  sensitive-headers: Cookie,Set-Cookie
+  routes:
+    user:
+      path: /user
+      url: http://localhost:9081/resource-spl-1
+    resource-spl-1:
+      path: /persons-spl-1/**
+      url: http://localhost:9081/resource-spl-1/persons-local
+    user-spl-1:
+      path: /protected-spl-1/**
+      url: http://localhost:9081/resource-spl-1/protected-local
+    resource-spl-2:
+      path: /persons-spl-2/**
+      url: http://localhost:9081/resource-spl-1/persons-remote
+    user-spl-2:
+      path: /protected-spl-2/**
+      url: http://localhost:9081/resource-spl-1/protected-remote
+
+security:
+  basic:
+    enabled: false
+  sessions: stateless
+
+# custom configuration (optional only for OAuth2 Client in Zuul Proxy)
+oauth2:
+  accessTokenUri: http://localhost:9083/auth-service/oauth/token
+  checkTokenUri: http://localhost:9083/auth-service/oauth/check_token
+  clientId: oauth2-secret
+  clientSecret: bbT3W5k8ZW6W
+   
+#logging:
+#  level:
+#    org.springframework.security: DEBUG
