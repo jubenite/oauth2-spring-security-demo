@@ -1,6 +1,4 @@
-# oauth2-spring-security-demo
-
-# SPRING BOOT OAUTH2 DEMO (GrantType=Password)
+# Spring Boot oauth2 demo (GrantType=Password)
 
 Components: Zuul Proxy, OAuth2Server, 2 Resource Servers
 Zuul proxy configured to forward OAuth2 token to resource servers
